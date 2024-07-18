@@ -1,6 +1,6 @@
 provider "google" {
-  project = "infrastructure-gitops-project"
-  region  = "us-east1-d"
+  project = "your-gcp-project-id"
+  region  = "us-central1"
 }
 
 module "vpc" {
@@ -31,6 +31,7 @@ module "instance" {
   instance_name = "my-vm"
   instance_type = "n1-standard-1"
   instance_zone = "us-central1-a"
+  custom_image  = "projects/infrastructure-gitops-project/global/images/weather-app-instance-image"
 }
 
 module "load_balancer" {
