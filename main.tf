@@ -29,7 +29,7 @@ module "instance" {
   source        = "./modules/instance"
   vpc_name      = module.vpc.vpc_name
   subnet_name   = module.vpc.private_subnet_name
-  instance_name = "weather-app-machine"
+  instance_name = "weather-app-m"
   instance_type = "n1-standard-1"
   instance_zone = "us-east1-d"
   custom_image  = "projects/infrastructure-gitops-project/global/images/weather-app-instance-image"
