@@ -1,6 +1,6 @@
 provider "google" {
-  project = "your-gcp-project-id"
-  region  = "us-central1"
+  project = "infrastructure-gitops-project"
+  region  = "us-east1"
 }
 
 module "vpc" {
@@ -14,8 +14,9 @@ module "vpc" {
 }
 
 module "firewall" {
-  source     = "./modules/firewall"
-  vpc_name   = module.vpc.vpc_name
+  source = "./modules/firewall"
+  vpc_name = module.vpc.vpc_name
+  target_tag = "weather-app"
 }
 
 module "nat_gateway" {
@@ -28,10 +29,12 @@ module "instance" {
   source        = "./modules/instance"
   vpc_name      = module.vpc.vpc_name
   subnet_name   = module.vpc.private_subnet_name
-  instance_name = "my-vm"
+  instance_name = "weather-app-machine"
   instance_type = "n1-standard-1"
-  instance_zone = "us-central1-a"
+  instance_zone = "us-east1-d"
   custom_image  = "projects/infrastructure-gitops-project/global/images/weather-app-instance-image"
+  instance_tags = ["weather-app"]
+
 }
 
 module "load_balancer" {

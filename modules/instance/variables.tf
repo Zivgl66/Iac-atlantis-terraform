@@ -27,3 +27,8 @@ variable "custom_image" {
   description = "The custom image to use for the instance"
   type        = string
 }
+
+variable "instance_tags" {
+  description = "The tags to attach to the instance"
+  type        = list(string)
+}

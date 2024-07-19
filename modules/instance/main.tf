@@ -13,6 +13,9 @@ resource "google_compute_instance" "vm_instance" {
     network    = var.vpc_name
     subnetwork = var.subnet_name
   }
+
+  tags = var.instance_tags
+
 }
 
 resource "google_compute_instance_group" "instance_group" {

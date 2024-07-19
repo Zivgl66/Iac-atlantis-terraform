@@ -26,5 +26,5 @@ variable "private_subnet_cidr" {
 variable "region" {
   description = "The region to deploy resources"
   type        = string
-  default     = "us-central1"
+  default     = "us-east1"
 }
