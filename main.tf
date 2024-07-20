@@ -18,21 +18,34 @@ provider "google" {
   region  = "us-east1"
 }
 
-data "google_firestore_document" "lock" {
+# data "google_firestore_document" "lock" {
+#   project    = "infrastructure-gitops-project"
+#   database   = "tf-state"
+#   collection = "terraform_locks"
+#   document   = "global_lock"
+# }
+resource "google_firestore_document" "lock" {
   project    = "infrastructure-gitops-project"
   database   = "tf-state"
   collection = "terraform_locks"
-  document   = "global_lock"
+  document_id = "global_lock"
+
+
+  fields = jsonencode({
+    lock_id = "global"
+  })
 }
 
 module "vpc" {
-  source         = "./modules/vpc"
-  vpc_name       = "my-vpc-network"
+  source              = "./modules/vpc"
+  vpc_name            = "my-vpc-network"
   public_subnet_name  = "my-public-subnet"
   public_subnet_cidr  = "10.0.1.0/24"
   private_subnet_name = "my-private-subnet"
   private_subnet_cidr = "10.0.2.0/24"
   region              = "us-central1"
+  nat_router_name     = "nat-router"
+  nat_gateway_name    = "nat-gateway"
 }
 
 module "firewall" {
@@ -41,11 +54,6 @@ module "firewall" {
   target_tag = "weather-app"
 }
 
-module "nat_gateway" {
-  source         = "./modules/nat_gateway"
-  vpc_name       = module.vpc.vpc_name
-  public_subnet_name  = module.vpc.public_subnet_name
-}
 
 module "instance" {
   source        = "./modules/instance"

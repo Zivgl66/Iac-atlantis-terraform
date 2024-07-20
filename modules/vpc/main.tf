@@ -17,13 +17,13 @@ resource "google_compute_subnetwork" "private_subnet" {
 }
 
 resource "google_compute_router" "nat_router" {
-  name    = "nat-router"
+  name    = var.nat_router_name
   network = google_compute_network.vpc_network.self_link
   region  = var.region
 }
 
 resource "google_compute_router_nat" "nat_gateway" {
-  name                               = "nat-gateway"
+  name                               = var.nat_gateway_name
   router                             = google_compute_router.nat_router.name
   region                             = var.region
   nat_ip_allocate_option             = "AUTO_ONLY"

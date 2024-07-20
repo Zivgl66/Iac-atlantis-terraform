@@ -1,5 +1,5 @@
 variable "vpc_name" {
-  description = "The name of the VPC"
+  description = "The name of the VPC network"
   type        = string
 }
 
@@ -9,7 +9,7 @@ variable "public_subnet_name" {
 }
 
 variable "public_subnet_cidr" {
-  description = "The CIDR block of the public subnet"
+  description = "The CIDR range of the public subnet"
   type        = string
 }
 
@@ -19,12 +19,21 @@ variable "private_subnet_name" {
 }
 
 variable "private_subnet_cidr" {
-  description = "The CIDR block of the private subnet"
+  description = "The CIDR range of the private subnet"
   type        = string
 }
 
 variable "region" {
-  description = "The region to deploy resources"
+  description = "The region where resources will be created"
   type        = string
-  default     = "us-east1"
+}
+
+variable "nat_router_name" {
+  description = "The name of the NAT router"
+  type        = string
+}
+
+variable "nat_gateway_name" {
+  description = "The name of the NAT gateway"
+  type        = string
 }
