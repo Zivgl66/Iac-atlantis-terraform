@@ -19,7 +19,7 @@ provider "google" {
 }
 
 variable "credentials_file_path" {
-  default = "/tmp/infrastructure-gitops-project-6137ba1f55bf.json"
+  default = "/etc/atlantis/gcp-cred.json"
 }
 
 resource "google_firestore_document" "lock" {
