@@ -35,5 +35,5 @@ variable "instance_tags" {
 
 variable "project_id" {
   description = "The id of the project"
-  type        = list(string)
+  type        = string
 }
