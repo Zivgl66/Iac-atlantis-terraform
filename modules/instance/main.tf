@@ -1,5 +1,6 @@
 resource "google_compute_instance_from_machine_image" "vm_instance" {
   provider = google-beta
+  project = var.project_id
   name         = var.instance_name
   zone         = var.instance_zone
 

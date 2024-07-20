@@ -32,3 +32,8 @@ variable "instance_tags" {
   description = "The tags to attach to the instance"
   type        = list(string)
 }
+
+variable "project_id" {
+  description = "The id of the project"
+  type        = list(string)
+}
