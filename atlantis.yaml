@@ -3,9 +3,6 @@ projects:
   - dir: .
     autoplan:
       when_modified: ["*.tf", "*.tfvars", "*.tfstate"]
-      enabled: true
-    apply_requirements: [approved]
-    workflow: default
 workflows:
   default:
     plan:
