@@ -1,10 +1,11 @@
 version: 3
 projects:
   - dir: .
-    workflow: default
     autoplan:
       when_modified: ["*.tf", "*.tfvars", "*.tfstate"]
       enabled: true
+    apply_requirements: [approved]
+    workflow: default
 workflows:
   default:
     plan:
@@ -14,6 +15,3 @@ workflows:
     apply:
       steps:
         - apply
-    policies:
-      approved: true
-    automerge: true
