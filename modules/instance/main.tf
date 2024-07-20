@@ -9,6 +9,7 @@ resource "google_compute_instance_from_machine_image" "vm_instance" {
 
   network_interface {
     network    = var.vpc_name
+    subnetwork_project = var.subnetwork_project
     subnetwork = var.subnet_name
   }
 

@@ -37,3 +37,8 @@ variable "project_id" {
   description = "The id of the project"
   type        = string
 }
+
+variable "subnetwork_project" {
+  description = "The subnetwork project ID"
+  type        = string
+}
