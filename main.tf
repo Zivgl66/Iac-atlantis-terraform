@@ -13,17 +13,15 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("/home/ziv/git/infratstructure-gitops-project/infrastructure-gitops-project-6137ba1f55bf.json")
+  credentials = file(var.credentials_file_path)
   project = "infrastructure-gitops-project"
   region  = "us-east1"
 }
 
-# data "google_firestore_document" "lock" {
-#   project    = "infrastructure-gitops-project"
-#   database   = "tf-state"
-#   collection = "terraform_locks"
-#   document   = "global_lock"
-# }
+variable "credentials_file_path" {
+  default = "/tmp/infrastructure-gitops-project-6137ba1f55bf.json"
+}
+
 resource "google_firestore_document" "lock" {
   project    = "infrastructure-gitops-project"
   database   = "tf-state"
