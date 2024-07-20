@@ -41,7 +41,7 @@ module "vpc" {
   public_subnet_cidr  = "10.0.1.0/24"
   private_subnet_name = "my-private-subnet"
   private_subnet_cidr = "10.0.2.0/24"
-  region              = "us-central1"
+  region              = "us-east1"
   nat_router_name     = "nat-router"
   nat_gateway_name    = "nat-gateway"
 }
