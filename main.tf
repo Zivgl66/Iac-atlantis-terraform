@@ -1,6 +1,28 @@
+terraform {
+  backend "gcs" {
+    bucket  = "tf-state01"
+    prefix  = "terraform/terraform.tfstate"
+  }
+  
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = ">= 3.5.0"
+    }
+  }
+}
+
 provider "google" {
+  credentials = file("/home/ziv/git/infratstructure-gitops-project/infrastructure-gitops-project-6137ba1f55bf.json")
   project = "infrastructure-gitops-project"
   region  = "us-east1"
+}
+
+data "google_firestore_document" "lock" {
+  project    = "infrastructure-gitops-project"
+  database   = "tf-state"
+  collection = "terraform_locks"
+  document   = "global_lock"
 }
 
 module "vpc" {
