@@ -27,7 +27,7 @@ data "google_firestore_document" "lock" {
 
 module "vpc" {
   source         = "./modules/vpc"
-  vpc_name       = "my-vpc-network-01"
+  vpc_name       = "my-vpc-network"
   public_subnet_name  = "my-public-subnet"
   public_subnet_cidr  = "10.0.1.0/24"
   private_subnet_name = "my-private-subnet"
