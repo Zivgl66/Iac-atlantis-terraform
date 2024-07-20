@@ -30,7 +30,7 @@ resource "google_firestore_document" "lock" {
 
 
   fields = jsonencode({
-    lock_id = "global"
+    lock_id = { stringValue = "global" }
   })
 }
 
@@ -60,7 +60,7 @@ module "instance" {
   instance_name = "weather-app-m"
   instance_type = "n1-standard-1"
   instance_zone = "us-east1-d"
-  custom_image  = "projects/infrastructure-gitops-project/global/images/weather-app-instance-image"
+  custom_image  = "projects/infrastructure-gitops-project/global/machineImages/weather-app-instance-image"
   instance_tags = ["weather-app"]
 
 }
