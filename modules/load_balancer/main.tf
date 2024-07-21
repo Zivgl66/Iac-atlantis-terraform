@@ -6,16 +6,23 @@ resource "google_compute_health_check" "default" {
   unhealthy_threshold = 2
 
   http_health_check {
-    port = 80
+    port = 5000
   }
 }
 
 resource "google_compute_backend_service" "default" {
   name          = "my-backend-service"
+  protocol    = "HTTP"
+  port_name   = "http"
+  timeout_sec = 10
   health_checks = [google_compute_health_check.default.self_link]
 
   backend {
     group = var.instance_group
+  }
+  
+  log_config {
+    enable = true
   }
 }
 
