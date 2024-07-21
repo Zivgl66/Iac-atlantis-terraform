@@ -63,8 +63,8 @@ module "instance" {
   instance_zone = "us-east1-d"
   custom_image  = "projects/infrastructure-gitops-project/global/machineImages/weather-app-instance-image"
   instance_tags = ["weather-app"]
-  subnetwork_project  = "infrastructure-gitops-project"  
-
+  subnetwork_project  = "infrastructure-gitops-project" 
+  depends_on          = [google_compute_subnetwork.private_subnet] 
 }
 
 module "load_balancer" {
