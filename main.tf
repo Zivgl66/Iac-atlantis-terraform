@@ -64,7 +64,7 @@ module "instance" {
   custom_image  = "projects/infrastructure-gitops-project/global/machineImages/weather-app-instance-image"
   instance_tags = ["weather-app"]
   subnetwork_project  = "infrastructure-gitops-project" 
-  depends_on          = [module.vpc.google_compute_subnetwork.private_subnet] 
+  depends_on          = [module.vpc] 
 }
 
 module "load_balancer" {
