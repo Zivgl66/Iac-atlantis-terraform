@@ -1,8 +1,12 @@
 version: 3
+automerge: true
 projects:
-  - dir: .
+  - name: infrastructure-gitops
+    branch: /main/
+    dir: .
     autoplan:
       when_modified: ["*.tf", "*.tfvars", "*.tfstate"]
+    apply_requirements: [approved]
 workflows:
   default:
     plan:
