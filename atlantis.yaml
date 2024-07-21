@@ -2,7 +2,6 @@ version: 3
 automerge: true
 projects:
   - name: infrastructure-gitops
-    branch: main
     dir: .
     autoplan:
       when_modified: ["*.tf", "*.tfvars", "*.tfstate"]
