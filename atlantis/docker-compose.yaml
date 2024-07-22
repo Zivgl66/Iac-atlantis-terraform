@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  atlantis:
+    image: runatlantis/atlantis
+    container_name: atlantis
+    restart: unless-stopped
+    ports:
+      - "80:4141"
+    volumes:
+	- ./config:/etc/atlantis
+    environment:
+      - ATLANTIS_GITLAB_TOKEN=${ATLANTIS_GITLAB_TOKEN}
+      - ATLANTIS_GH_USER=${ATLANTIS_GH_USER}
+      - ATLANTIS_GH_TOKEN=${ATLANTIS_GH_TOKEN}
+      - ATLANTIS_REPO_ALLOWLIST=${ATLNATIS_REPO_ALLOWLIST}
+      - ATLANTIS_GITLAB_WEBHOOK_SECRET=${ATLANTIS_GITLAB_WEBHOOK_SECRET}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
+    command: >
+      server
+      --gh-user=${ATLANTIS_GH_USER}
+      --gh-token=${ATLANTIS_GH_TOKEN}
+      --repo-allowlist=${ATLNATIS_REPO_ALLOWLIST}
+      --gitlab-token=${ATLANTIS_GITLAB_TOKEN}
+      --gitlab-user=${ATLANTIS_GH_USER}
+      --gitlab-hostname=gitlab.com
+      --gitlab-webhook-secret=${ATLANTIS_GITLAB_WEBHOOK_SECRET}
+      --repo-config=/etc/atlantis/repos.yaml
+
