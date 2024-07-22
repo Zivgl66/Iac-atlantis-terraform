@@ -29,7 +29,7 @@ This project contains the Terraform code and configuration for deploying and man
 
 5. **Firewall Rules**:
 
-   - **SSH**: Allow SSH traffic on port 22.
+   - **SSH**: Allow SSH traffic on port 22 from the source ip.
    - **HTTP/HTTPS**: Allow HTTP and HTTPS traffic on ports 80 and 443.
    - **Application Port**: Allow traffic on port 5000 for internal communication between the load balancer and instances.
 
