@@ -103,7 +103,7 @@ This project contains the Terraform code and configuration for deploying and man
    - Integrates with Terraform and application code to inject secrets at runtime, reducing the risk of exposure.
 
 7. **Database and Datastore for Terraform State Management**:
-   - Using Google Cloud Datastore to manage Terraform state locks prevents concurrent modifications, ensuring state consistency and integrity.
+   - Using Google Cloud Datastore (GCS with Firestore) to manage Terraform state locks prevents concurrent modifications, ensuring state consistency and integrity.
 
 ## Challenges Faced and Solutions
 
