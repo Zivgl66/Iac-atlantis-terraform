@@ -17,6 +17,28 @@ This repository contains the Terraform code and configuration for deploying and 
     cd <repository-name>
     ```
 
+### Setting Up Atlantis
+
+**_set up in your vm instance_**
+
+1. **Enter Credentials into HashiCorp Vault**:
+
+   - Store your Gitlab credentials and other sensitive information in HashiCorp Vault. For example:
+
+     ```sh
+     vault kv put secret/atlantis gh_user=your-github-username gh_token=your-github-token
+     ```
+
+2. **Install Docker and Docker Compose**:
+
+3. **Run the Setup Script**:
+
+   - The setup script `start_atlantis.sh` is provided in the repository. This script will fetch the secrets from HashiCorp Vault and start Atlantis in a container.
+
+     ```sh
+     ./start_atlantis.sh
+     ```
+
 ### Workflow with Atlantis and GitLab CI/CD
 
 1. **Feature Branch Development**:
