@@ -33,8 +33,9 @@ This project contains the Terraform code and configuration for deploying and man
    - **HTTP/HTTPS**: Allow HTTP and HTTPS traffic on ports 80 and 443.
    - **Application Port**: Allow traffic on port 5000 for internal communication between the load balancer and instances.
 
-6. **Database and Datastore for Terraform State Management**:
-   - **Google Cloud Datastore**: Used to manage the Terraform state lock mechanism, ensuring that only one Terraform process can run at a time. This prevents concurrent modifications to the infrastructure state.
+6. **Google Cloud Storage (GCS) and Firestore for Terraform State Management**:
+   - **Google Cloud Storage**: Using Google Cloud Storage (GCS) to store the Terraform state file ensures centralized, secure, and scalable storage.
+   - **Google Cloud Firestore**: Using Google Cloud Firestore to manage Terraform state locks prevents concurrent modifications, ensuring state consistency and integrity.
 
 ### Security Measures Implemented
 
@@ -102,8 +103,8 @@ This project contains the Terraform code and configuration for deploying and man
    - Ensures that sensitive information such as passwords and credentials are securely stored and managed.
    - Integrates with Terraform and application code to inject secrets at runtime, reducing the risk of exposure.
 
-7. **Database and Datastore for Terraform State Management**:
-   - Using Google Cloud Datastore (GCS with Firestore) to manage Terraform state locks prevents concurrent modifications, ensuring state consistency and integrity.
+7. **Storage and Firestore for Terraform State Management**:
+   - Using Google Cloud Storage with Google Cloud Firestore to manage Terraform state locks prevents concurrent modifications, ensuring state consistency and integrity.
 
 ## Challenges Faced and Solutions
 
