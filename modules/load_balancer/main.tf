@@ -12,8 +12,8 @@ resource "google_compute_health_check" "default" {
 
 resource "google_compute_backend_service" "default" {
   name          = "my-backend-service"
-  protocol    = "HTTP"
-  port_name   = "http"
+  protocol    = "TCP"
+  port_name   = "tcp"
   timeout_sec = 10
   health_checks = [google_compute_health_check.default.self_link]
 
