@@ -67,7 +67,7 @@ module "instance" {
   depends_on          = [module.vpc] 
 }
 
-module "instance" {
+module "instance2" {
   source        = "./modules/instance"
   vpc_name      = module.vpc.vpc_name
   subnet_name   = module.vpc.private_subnet_name
