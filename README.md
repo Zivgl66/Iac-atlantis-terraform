@@ -71,6 +71,21 @@ custom:
       - apply
 ```
 
+- **_Key Sections_**
+
+1. **version**: Specifies the version of the `atlantis.yaml` file format. Use `version: 3` for the latest version.
+
+2. **projects**: Defines the Terraform projects that Atlantis will manage. Each project can have the following attributes:
+
+   - **name**: A unique identifier for the project.
+   - **dir**: The directory containing the Terraform configuration for this project.
+   - **workspace**: The Terraform workspace to use.
+   - **workflow**: Specifies which workflow to use for this project.
+   - **autoplan**: Configuration for automatic planning. The `when_modified` attribute specifies which files should trigger a plan, and `enabled` enables or disables autoplan.
+
+3. **workflows**: Defines custom workflows for Atlantis to use. Workflows consist of `plan` and `apply` steps:
+   - **steps**: Each step can be a `run` command to execute a specific Terraform command or script.
+
 ### Workflow with Atlantis and GitLab CI/CD
 
 1. **Feature Branch Development**:
