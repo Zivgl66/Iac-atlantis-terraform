@@ -181,7 +181,54 @@ custom:
    - Upon approval, a team member comments atlantis apply to apply the changes.
    - Atlantis applies the changes and merges the pull request.
 
-### Monitoring Overview
+## Monitoring Setup and Chosen Metrics
+
+Monitoring is an integral part of this project to ensure the health, performance, and reliability of the infrastructure and applications. We have integrated several monitoring tools and configured key metrics to provide comprehensive insights.
+
+### Google Cloud Monitoring
+
+We utilize Google Cloud's Monitoring service for monitoring various aspects of the infrastructure. This includes VM instances, load balancers, and other critical resources.
+
+### Key Metrics
+
+1. **VM Instances**:
+
+   - **CPU Utilization**:
+     - **Purpose**: Monitor the CPU usage to ensure instances are neither over-utilized nor underutilized.
+     - **Configuration**: Alerts are set up to notify when CPU usage exceeds 80% for a sustained period, indicating potential performance bottlenecks.
+   - **Memory Utilization**:
+     - **Purpose**: Track memory usage to detect potential memory leaks or resource shortages.
+     - **Configuration**: Alerts are configured to trigger if memory usage consistently exceeds 75%, helping to preemptively address resource issues.
+
+2. **Load Balancer**:
+
+   - **Utilization**:
+     - **Purpose**: Monitor the load balancer's utilization to ensure it is efficiently handling the incoming traffic.
+     - **Configuration**: Utilization metrics help in scaling decisions and detecting traffic spikes.
+   - **Backend Request Count**:
+     - **Purpose**: Track the number of requests handled by the backend instances to understand traffic patterns and load distribution.
+     - **Configuration**: Provides insights into the load each instance is handling, useful for balancing and scaling.
+   - **Backend Latency**:
+     - **Purpose**: Monitor the response time of backend instances to detect latency issues that could affect user experience.
+     - **Configuration**: Alerts are set up to notify if the latency exceeds acceptable thresholds, allowing for quick remediation.
+
+3. **Global External Application Load Balancer Rule**:
+   - **Response Bytes**:
+     - **Purpose**: Measure the amount of response data sent to clients to monitor bandwidth usage and detect potential anomalies.
+     - **Configuration**: Tracking response bytes helps in understanding data transfer patterns and can indicate unusual activity or potential DDoS attacks.
+
+### Visualization and Alerts
+
+We use Google Cloud Monitoring dashboards to visualize these metrics, providing an at-a-glance view of the system's health and performance. Alerts are configured for critical metrics to ensure prompt notification and resolution of any issues.
+
+### Future Improvements
+
+We plan to enhance our monitoring setup by integrating additional tools and metrics, such as:
+
+- **Custom Application Metrics**: Adding application-specific metrics to gain deeper insights into application performance and user experience.
+- **Log-Based Metrics**: Utilizing logs to create custom metrics for more granular monitoring and alerting.
+
+By continually refining our monitoring setup, we aim to maintain high availability, performance, and reliability of our services.
 
 Below is the Monitoring dashboard for the project:
 
