@@ -41,6 +41,36 @@ This repository contains the Terraform code and configuration for deploying and 
      ./start_atlantis.sh
      ```
 
+## Changing the Atlantis Configuration
+
+The Atlantis configuration for your project is managed through the `atlantis.yaml` file. This file allows you to define how Atlantis should handle Terraform pull requests, specify workflows, define projects, and customize commands.
+
+### `atlantis.yaml` Overview
+
+The `atlantis.yaml` file is located in the root of your repository. Here is an example of what the file might look like:
+
+```yaml
+version: 3
+projects:
+- name: project-name
+   dir: .
+   workspace: default
+   workflow: custom
+   autoplan:
+      when_modified: ["*.tf", "*.tfvars"]
+      enabled: true
+workflows:
+custom:
+   plan:
+      steps:
+      - init
+      - plan
+   apply:
+      steps:
+      - run: <use to run a command>
+      - apply
+```
+
 ### Workflow with Atlantis and GitLab CI/CD
 
 1. **Feature Branch Development**:
