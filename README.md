@@ -96,11 +96,27 @@ This repository contains the Terraform code and configuration for deploying and 
 
 - **Atlantis**:
 
+  - Atlantis is a tool that facilitates GitOps for Terraform, enabling teams to automate Terraform workflows based on Git events.
   - Automates Terraform workflows by creating plans and applying changes based on GitLab merge requests.
   - Configured to wait for approval before applying changes and automatically merge changes after successful application.
 
 - **GitLab CI/CD**:
   - Used for continuous integration and deployment, running tests, and ensuring code quality before merging.
+
+### How Atlantis works
+
+- **Webhook Configuration**:
+
+  - **_Webhook Setup_**: A webhook is set up in your GitLab repository to notify Atlantis of events such as merge request creation, updates, and comments.
+    Event Handling: When a webhook event occurs (e.g., a merge request is created), GitLab sends an HTTP POST request to the Atlantis server.
+    Event Processing:
+
+  - **_Event Detection_**: Atlantis detects the event and extracts necessary information such as the repository URL, branch name, and commit SHA.
+    Repository Cloning: Atlantis clones the repository to its local workspace using the provided Git credentials.
+    Plan Creation:
+
+  - **_Terraform Plan: Atlantis_** runs terraform plan to create an execution plan that shows what changes will be made to the infrastructure.
+    Plan Output: The output of the plan is posted as a comment on the merge request for team members to review.
 
 ### Workflow Steps
 
@@ -115,7 +131,8 @@ This repository contains the Terraform code and configuration for deploying and 
 
 3. **Review and Approval**:
    - Merge requests are reviewed and approved by team members.
-   - Upon approval, Atlantis applies the changes and merges the pull request.
+   - Upon approval, a team member comments atlantis apply to apply the changes.
+   - Atlantis applies the changes and merges the pull request.
 
 ## Challenges Faced and Solutions
 
