@@ -31,6 +31,8 @@ This repository contains the Terraform code and configuration for deploying and 
 
 2. **Install Docker and Docker Compose**:
 
+   - https://docs.docker.com/engine/install/ubuntu/
+
 3. **Run the Setup Script**:
 
    - The setup script `start_atlantis.sh` is provided in the repository. This script will fetch the secrets from HashiCorp Vault and start Atlantis in a container.
