@@ -181,6 +181,13 @@ custom:
    - Upon approval, a team member comments atlantis apply to apply the changes.
    - Atlantis applies the changes and merges the pull request.
 
+### Monitoring Overview
+
+Below is the Monitoring dashboard for the project:
+
+![monitoring_1](assets/Infrastructure_Monitoring_Dashboard_01.png)
+![monitoring_2](assets/Infrastructure_Monitoring_Dashboard_02.png)
+
 ## Challenges Faced and Solutions
 
 ### Challenge: Managing Environment Variables
