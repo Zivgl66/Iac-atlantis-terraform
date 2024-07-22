@@ -227,6 +227,7 @@ We plan to enhance our monitoring setup by integrating additional tools and metr
 
 - **Custom Application Metrics**: Adding application-specific metrics to gain deeper insights into application performance and user experience.
 - **Log-Based Metrics**: Utilizing logs to create custom metrics for more granular monitoring and alerting.
+- **Alerts**: Creating alerts based on the metrics.
 
 By continually refining our monitoring setup, we aim to maintain high availability, performance, and reliability of our services.
 
