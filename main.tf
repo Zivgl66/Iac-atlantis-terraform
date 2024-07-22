@@ -58,7 +58,7 @@ module "instance" {
   vpc_name      = module.vpc.vpc_name
   subnet_name   = module.vpc.private_subnet_name
   project_id = "infrastructure-gitops-project"
-  instance_name = "weather-app-m2"
+  instance_name = "weather-app-m1"
   instance_type = "n1-standard-1"
   instance_zone = "us-east1-c"
   custom_image  = "projects/infrastructure-gitops-project/global/machineImages/weather-app-instance-image"
@@ -72,7 +72,7 @@ module "instance2" {
   vpc_name      = module.vpc.vpc_name
   subnet_name   = module.vpc.private_subnet_name
   project_id = "infrastructure-gitops-project"
-  instance_name = "weather-app-m3"
+  instance_name = "weather-app-m2"
   instance_type = "n1-standard-1"
   instance_zone = "us-east1-c"
   custom_image  = "projects/infrastructure-gitops-project/global/machineImages/weather-app-instance-image"
