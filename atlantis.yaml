@@ -1,7 +1,7 @@
 version: 3
 automerge: true
 projects:
-  - name: infrastructure-gitops
+  - name: infrastructure-gitops-production
     dir: .
     autoplan:
       when_modified: ["*.tf", "*.tfvars", "*.tfstate"]
@@ -10,8 +10,12 @@ workflows:
   default:
     plan:
       steps:
+        - run: echo Running Terraform fmt check...
+        - run: terraform fmt -check
+        - run: echo Running Terraform init and plan...
         - init
         - plan
     apply:
       steps:
+        - run: echo Running Terraform apply...
         - apply
