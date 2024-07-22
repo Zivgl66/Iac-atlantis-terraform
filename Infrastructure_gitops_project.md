@@ -28,9 +28,13 @@ This project contains the Terraform code and configuration for deploying and man
    - A NAT gateway to allow instances in the private subnet to access the internet for updates and other outbound connections.
 
 5. **Firewall Rules**:
+
    - **SSH**: Allow SSH traffic on port 22.
    - **HTTP/HTTPS**: Allow HTTP and HTTPS traffic on ports 80 and 443.
    - **Application Port**: Allow traffic on port 5000 for internal communication between the load balancer and instances.
+
+6. **Database and Datastore for Terraform State Management**:
+   - **Google Cloud Datastore**: Used to manage the Terraform state lock mechanism, ensuring that only one Terraform process can run at a time. This prevents concurrent modifications to the infrastructure state.
 
 ### Security Measures Implemented
 
@@ -89,8 +93,17 @@ This project contains the Terraform code and configuration for deploying and man
    - Ensures secure and controlled access to Google Cloud resources, adhering to the principle of least privilege.
 
 5. **Monitoring and Metrics**:
+
    - Selected metrics provide comprehensive visibility into the performance and health of the infrastructure.
    - Helps in proactive identification and resolution of issues.
+
+6. **Secret Management with HashiCorp Vault**:
+
+   - Ensures that sensitive information such as passwords and credentials are securely stored and managed.
+   - Integrates with Terraform and application code to inject secrets at runtime, reducing the risk of exposure.
+
+7. **Database and Datastore for Terraform State Management**:
+   - Using Google Cloud Datastore to manage Terraform state locks prevents concurrent modifications, ensuring state consistency and integrity.
 
 ## Challenges Faced and Solutions
 
@@ -103,11 +116,6 @@ This project contains the Terraform code and configuration for deploying and man
 - **Solution**: Implemented an HTTP load balancer to distribute traffic across instances. The load balancer forwards requests to instances in the private subnet. This setup ensures that the application is accessible while keeping the backend instances secure.
 
 ## Monitoring and Logging
-
-### Set Up Monitoring Dashboards
-
-1. **Create Dashboards in Google Cloud Monitoring**:
-   - Create dashboards to track key metrics and logs.
 
 ### Key Metrics to Track
 

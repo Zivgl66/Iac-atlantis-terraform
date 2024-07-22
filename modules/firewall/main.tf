@@ -27,6 +27,11 @@ resource "google_compute_firewall" "allow-https" {
 
 }
 
+# Allow ssh only from your IP - This gets the ip of the source.
+data "http" "myip" {
+  url = "https://ipv4.icanhazip.com"
+}
+
 resource "google_compute_firewall" "allow-ssh" {
   name    = "allow-ssh"
   network = var.vpc_name
@@ -36,7 +41,7 @@ resource "google_compute_firewall" "allow-ssh" {
     ports    = ["22"]
   }
 
-  source_ranges = ["0.0.0.0/0"]
+  source_ranges = ["${chomp(data.http.myip.response_body)}/32"]
 
   target_tags = [var.target_tag]
 
