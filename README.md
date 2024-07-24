@@ -17,17 +17,48 @@ This repository contains the Terraform code and configuration for deploying and 
     cd <repository-name>
     ```
 
+### Steps to Configure GitLab Webhook
+
+1. **Navigate to Webhooks**:
+
+   - Go to your GitLab repository.
+   - Click on **Settings** > **Webhooks**.
+
+2. **Add a Webhook**:
+   - **URL**: Enter the URL of your Atlantis server:
+     ```
+     http://<atlantis-server-url>/events
+     ```
+   - **Secret Token**: Enter a secret token for authentication.
+   - **Trigger Events**: Select **Merge Request events**, **Push events**, and **Note events**.
+   - **SSL Verification**: Enable if using SSL.
+   - Click **Add webhook** to save.
+
 ### Setting Up Atlantis
 
 **_set up in your vm instance_**
 
 1. **Enter Credentials into HashiCorp Vault**:
 
+   - Follow the instuctions and install Hashicorp vault:
+     https://developer.hashicorp.com/vault/tutorials/getting-started/getting-started-install
+
+   - Run the vault server:
+     https://developer.hashicorp.com/vault/tutorials/getting-started/getting-started-dev-server
+
    - Store your Gitlab credentials and other sensitive information in HashiCorp Vault. For example:
 
      ```sh
      vault kv put secret/atlantis gh_user=your-github-username gh_token=your-github-token
      ```
+
+   - Store the requried variables for atlantis configuration:
+     **ATLANTIS_GH_USER** = gitlab username.
+     **ATLANTIS_GH_TOKEN** = gitlab token.
+     **ATLANTIS_REPO_ALLOWLIST** = repositories it will accept webhooks from.
+     **ATLANTIS_GITLAB_TOKEN** = same gitlab token.
+     **ATLANTIS_GITLAB_WEBHOOK_SECRET** = gitlab webhook secret string.
+     **GOOGLE_APPLICATION_CREDENTIALS** = google credentials file path.
 
 2. **Install Docker and Docker Compose**:
 
