@@ -16,7 +16,9 @@ workflows:
       steps:
         - run: echo Running Terraform init and plan...
         - init
-        - plan
+        - plan:
+            extra_args: ["-var-file", "./prod/terraform.tfvars"]
+
     apply:
       steps:
         - run: echo Running Terraform apply...
