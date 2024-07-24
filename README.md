@@ -30,7 +30,7 @@ This repository contains the Terraform code and configuration for deploying and 
      http://<atlantis-server-url>/events
      ```
    - **Secret Token**: Enter a secret token for authentication.
-   - **Trigger Events**: Select **Merge Request events**, **Push events**, and **Note events**.
+   - **Trigger Events**: Select **Merge Request events**, and **Comments**.
    - **SSL Verification**: Enable if using SSL.
    - Click **Add webhook** to save.
 

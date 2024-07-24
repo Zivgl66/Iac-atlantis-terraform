@@ -2,7 +2,9 @@ version: 3
 automerge: true
 projects:
   - name: infrastructure-gitops-production
+    branch: /main/
     dir: .
+    workspace: production
     autoplan:
       when_modified: ["*.tf", "*.tfvars"]
     apply_requirements: [approved]
