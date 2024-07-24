@@ -4,14 +4,16 @@ projects:
   - name: infrastructure-gitops-production
     dir: .
     autoplan:
-      when_modified: ["*.tf", "*.tfvars", "*.tfstate"]
+      when_modified: ["*.tf", "*.tfvars"]
     apply_requirements: [approved]
 workflows:
   default:
-    plan:
+    validate:
       steps:
         - run: echo Running Terraform fmt check...
         - run: terraform fmt -check
+    plan:
+      steps:
         - run: echo Running Terraform init and plan...
         - init
         - plan
