@@ -1,5 +1,6 @@
 variable "credentials_file_path" {
   # default = "/etc/atlantis/gcp-cred.json"
+  description = "The path to the gcp credentials file"
   default = "/home/ziv/git/infratstructure-gitops-project/gcp-cred.json"
 }
 

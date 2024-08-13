@@ -8,4 +8,5 @@
 
 output "load_balancer_forwarding_rule_ip" {
   value = module.load_balancer.forwarding_rule_ip
+  description = "ip for accessing the application through the load balancer"
 }
