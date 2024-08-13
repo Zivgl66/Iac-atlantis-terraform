@@ -197,32 +197,33 @@ custom:
 
 ### Inputs
 
-| Name                                                                                             | Description                                      | Type           | Default                                                                                    | Required |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------ | -------------- | ------------------------------------------------------------------------------------------ | :------: |
-| <a name="input_credentials_file_path"></a> [credentials_file_path](#input_credentials_file_path) | n/a                                              | `string`       | `"/home/ziv/git/infratstructure-gitops-project/gcp-cred.json"`                             |    no    |
-| <a name="input_custom_image"></a> [custom_image](#input_custom_image)                            | The custom image to use for the instance         | `string`       | `"projects/infrastructure-gitops-project/global/machineImages/weather-app-instance-image"` |    no    |
-| <a name="input_instance_group"></a> [instance_group](#input_instance_group)                      | The instance group for the load balancer backend | `string`       | `"my-group"`                                                                               |    no    |
-| <a name="input_instance_name"></a> [instance_name](#input_instance_name)                         | The name of the VM instance                      | `string`       | `"my-instance"`                                                                            |    no    |
-| <a name="input_instance_tags"></a> [instance_tags](#input_instance_tags)                         | The tags to attach to the instance               | `list(string)` | <pre>[<br> "weather-app"<br>]</pre>                                                        |    no    |
-| <a name="input_instance_type"></a> [instance_type](#input_instance_type)                         | The type of VM instance                          | `string`       | `"n1-standard-1"`                                                                          |    no    |
-| <a name="input_instance_zone"></a> [instance_zone](#input_instance_zone)                         | The zone to deploy the VM instance               | `string`       | `"us-east1-d"`                                                                             |    no    |
-| <a name="input_nat_gateway_name"></a> [nat_gateway_name](#input_nat_gateway_name)                | The name of the NAT gateway                      | `string`       | `"my-nat-gateway"`                                                                         |    no    |
-| <a name="input_nat_router_name"></a> [nat_router_name](#input_nat_router_name)                   | The name of the NAT router                       | `string`       | `"my-nat-router"`                                                                          |    no    |
-| <a name="input_private_subnet_cidr"></a> [private_subnet_cidr](#input_private_subnet_cidr)       | The CIDR range of the private subnet             | `string`       | `"[0.0.0.0/0]"`                                                                            |    no    |
-| <a name="input_private_subnet_name"></a> [private_subnet_name](#input_private_subnet_name)       | The name of the private subnet                   | `string`       | `"my-private-subnet"`                                                                      |    no    |
-| <a name="input_project_id"></a> [project_id](#input_project_id)                                  | The id of the project                            | `string`       | `"infrastructure-gitops-project"`                                                          |    no    |
-| <a name="input_public_subnet_cidr"></a> [public_subnet_cidr](#input_public_subnet_cidr)          | The CIDR range of the public subnet              | `string`       | `"[0.0.0.0/0]"`                                                                            |    no    |
-| <a name="input_public_subnet_name"></a> [public_subnet_name](#input_public_subnet_name)          | The name of the public subnet                    | `string`       | `"my-public-subnet"`                                                                       |    no    |
-| <a name="input_region"></a> [region](#input_region)                                              | The region where resources will be created       | `string`       | `"us-east1"`                                                                               |    no    |
-| <a name="input_subnet_name"></a> [subnet_name](#input_subnet_name)                               | The name of the subnet                           | `string`       | `"my-private-subnet"`                                                                      |    no    |
-| <a name="input_target_tag"></a> [target_tag](#input_target_tag)                                  | The target tag for the instances                 | `string`       | n/a                                                                                        |   yes    |
-| <a name="input_vpc_name"></a> [vpc_name](#input_vpc_name)                                        | The name of the VPC network                      | `string`       | `"my-vpc"`                                                                                 |    no    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_credentials_file_path"></a> [credentials\_file\_path](#input\_credentials\_file\_path) | The path to the gcp credentials file | `string` | `"/home/ziv/git/infratstructure-gitops-project/gcp-cred.json"` | no |
+| <a name="input_custom_image"></a> [custom\_image](#input\_custom\_image) | The custom image to use for the instance | `string` | `"projects/infrastructure-gitops-project/global/machineImages/weather-app-instance-image"` | no |
+| <a name="input_instance_group"></a> [instance\_group](#input\_instance\_group) | The instance group for the load balancer backend | `string` | `"my-group"` | no |
+| <a name="input_instance_name"></a> [instance\_name](#input\_instance\_name) | The name of the VM instance | `string` | `"my-instance"` | no |
+| <a name="input_instance_tags"></a> [instance\_tags](#input\_instance\_tags) | The tags to attach to the instance | `list(string)` | <pre>[<br>  "weather-app"<br>]</pre> | no |
+| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | The type of VM instance | `string` | `"n1-standard-1"` | no |
+| <a name="input_instance_zone"></a> [instance\_zone](#input\_instance\_zone) | The zone to deploy the VM instance | `string` | `"us-east1-d"` | no |
+| <a name="input_nat_gateway_name"></a> [nat\_gateway\_name](#input\_nat\_gateway\_name) | The name of the NAT gateway | `string` | `"my-nat-gateway"` | no |
+| <a name="input_nat_router_name"></a> [nat\_router\_name](#input\_nat\_router\_name) | The name of the NAT router | `string` | `"my-nat-router"` | no |
+| <a name="input_private_subnet_cidr"></a> [private\_subnet\_cidr](#input\_private\_subnet\_cidr) | The CIDR range of the private subnet | `string` | `"[0.0.0.0/0]"` | no |
+| <a name="input_private_subnet_name"></a> [private\_subnet\_name](#input\_private\_subnet\_name) | The name of the private subnet | `string` | `"my-private-subnet"` | no |
+| <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The id of the project | `string` | `"infrastructure-gitops-project"` | no |
+| <a name="input_public_subnet_cidr"></a> [public\_subnet\_cidr](#input\_public\_subnet\_cidr) | The CIDR range of the public subnet | `string` | `"[0.0.0.0/0]"` | no |
+| <a name="input_public_subnet_name"></a> [public\_subnet\_name](#input\_public\_subnet\_name) | The name of the public subnet | `string` | `"my-public-subnet"` | no |
+| <a name="input_region"></a> [region](#input\_region) | The region where resources will be created | `string` | `"us-east1"` | no |
+| <a name="input_subnet_name"></a> [subnet\_name](#input\_subnet\_name) | The name of the subnet | `string` | `"my-private-subnet"` | no |
+| <a name="input_target_tag"></a> [target\_tag](#input\_target\_tag) | The target tag for the instances | `string` | n/a | yes |
+| <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | The name of the VPC network | `string` | `"my-vpc"` | no |
 
 ### Outputs
 
-| Name                                                                                                                                | Description |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| <a name="output_load_balancer_forwarding_rule_ip"></a> [load_balancer_forwarding_rule_ip](#output_load_balancer_forwarding_rule_ip) | n/a         |
+| Name | Description |
+|------|-------------|
+| <a name="output_load_balancer_forwarding_rule_ip"></a> [load\_balancer\_forwarding\_rule\_ip](#output\_load\_balancer\_forwarding\_rule\_ip) | ip for accessing the application through the load balancer |
+
 
 ## GitOps Workflow
 
