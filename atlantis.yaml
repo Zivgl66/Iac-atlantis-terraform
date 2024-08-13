@@ -20,7 +20,6 @@ workflows:
         - init
         - plan:
             extra_args: ["-var-file", "./prod/terraform.tfvars"]
-
     apply:
       steps:
         - run: echo Running Terraform apply...

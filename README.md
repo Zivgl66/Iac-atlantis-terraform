@@ -166,6 +166,64 @@ custom:
 8. **Auto-Merge the Changes**:
    - After successfully applying the changes, Atlantis will automatically merge the feature branch into the `main` branch.
 
+## Terraform Configuration
+
+### Requirements
+
+| Name                                                            | Version  |
+| --------------------------------------------------------------- | -------- |
+| <a name="requirement_google"></a> [google](#requirement_google) | >= 3.5.0 |
+
+### Providers
+
+| Name                                                      | Version  |
+| --------------------------------------------------------- | -------- |
+| <a name="provider_google"></a> [google](#provider_google) | >= 3.5.0 |
+
+### Modules
+
+| Name                                                                       | Source                  | Version |
+| -------------------------------------------------------------------------- | ----------------------- | ------- |
+| <a name="module_firewall"></a> [firewall](#module_firewall)                | ./modules/firewall      | n/a     |
+| <a name="module_instance"></a> [instance](#module_instance)                | ./modules/instance      | n/a     |
+| <a name="module_load_balancer"></a> [load_balancer](#module_load_balancer) | ./modules/load_balancer | n/a     |
+| <a name="module_vpc"></a> [vpc](#module_vpc)                               | ./modules/vpc           | n/a     |
+
+### Resources
+
+| Name                                                                                                                                | Type     |
+| ----------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| [google_firestore_document.lock](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_document) | resource |
+
+### Inputs
+
+| Name                                                                                             | Description                                      | Type           | Default                                                                                    | Required |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------ | -------------- | ------------------------------------------------------------------------------------------ | :------: |
+| <a name="input_credentials_file_path"></a> [credentials_file_path](#input_credentials_file_path) | n/a                                              | `string`       | `"/home/ziv/git/infratstructure-gitops-project/gcp-cred.json"`                             |    no    |
+| <a name="input_custom_image"></a> [custom_image](#input_custom_image)                            | The custom image to use for the instance         | `string`       | `"projects/infrastructure-gitops-project/global/machineImages/weather-app-instance-image"` |    no    |
+| <a name="input_instance_group"></a> [instance_group](#input_instance_group)                      | The instance group for the load balancer backend | `string`       | `"my-group"`                                                                               |    no    |
+| <a name="input_instance_name"></a> [instance_name](#input_instance_name)                         | The name of the VM instance                      | `string`       | `"my-instance"`                                                                            |    no    |
+| <a name="input_instance_tags"></a> [instance_tags](#input_instance_tags)                         | The tags to attach to the instance               | `list(string)` | <pre>[<br> "weather-app"<br>]</pre>                                                        |    no    |
+| <a name="input_instance_type"></a> [instance_type](#input_instance_type)                         | The type of VM instance                          | `string`       | `"n1-standard-1"`                                                                          |    no    |
+| <a name="input_instance_zone"></a> [instance_zone](#input_instance_zone)                         | The zone to deploy the VM instance               | `string`       | `"us-east1-d"`                                                                             |    no    |
+| <a name="input_nat_gateway_name"></a> [nat_gateway_name](#input_nat_gateway_name)                | The name of the NAT gateway                      | `string`       | `"my-nat-gateway"`                                                                         |    no    |
+| <a name="input_nat_router_name"></a> [nat_router_name](#input_nat_router_name)                   | The name of the NAT router                       | `string`       | `"my-nat-router"`                                                                          |    no    |
+| <a name="input_private_subnet_cidr"></a> [private_subnet_cidr](#input_private_subnet_cidr)       | The CIDR range of the private subnet             | `string`       | `"[0.0.0.0/0]"`                                                                            |    no    |
+| <a name="input_private_subnet_name"></a> [private_subnet_name](#input_private_subnet_name)       | The name of the private subnet                   | `string`       | `"my-private-subnet"`                                                                      |    no    |
+| <a name="input_project_id"></a> [project_id](#input_project_id)                                  | The id of the project                            | `string`       | `"infrastructure-gitops-project"`                                                          |    no    |
+| <a name="input_public_subnet_cidr"></a> [public_subnet_cidr](#input_public_subnet_cidr)          | The CIDR range of the public subnet              | `string`       | `"[0.0.0.0/0]"`                                                                            |    no    |
+| <a name="input_public_subnet_name"></a> [public_subnet_name](#input_public_subnet_name)          | The name of the public subnet                    | `string`       | `"my-public-subnet"`                                                                       |    no    |
+| <a name="input_region"></a> [region](#input_region)                                              | The region where resources will be created       | `string`       | `"us-east1"`                                                                               |    no    |
+| <a name="input_subnet_name"></a> [subnet_name](#input_subnet_name)                               | The name of the subnet                           | `string`       | `"my-private-subnet"`                                                                      |    no    |
+| <a name="input_target_tag"></a> [target_tag](#input_target_tag)                                  | The target tag for the instances                 | `string`       | n/a                                                                                        |   yes    |
+| <a name="input_vpc_name"></a> [vpc_name](#input_vpc_name)                                        | The name of the VPC network                      | `string`       | `"my-vpc"`                                                                                 |    no    |
+
+### Outputs
+
+| Name                                                                                                                                | Description |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| <a name="output_load_balancer_forwarding_rule_ip"></a> [load_balancer_forwarding_rule_ip](#output_load_balancer_forwarding_rule_ip) | n/a         |
+
 ## GitOps Workflow
 
 ### Atlantis and GitLab CI/CD Integration
